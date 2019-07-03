@@ -21,7 +21,7 @@ import com.game.inca.maisqueespecial.model.Jogo;
 import com.game.inca.maisqueespecial.repository.InstituicaoRepository;
 
 @Controller
-@CrossOrigin(origins = "https://mais-que-especial.herokuapp.com")
+@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
 public class InstituicaoController {
 	
 	@Autowired
@@ -30,8 +30,8 @@ public class InstituicaoController {
 	
 	
 	@RequestMapping(value = "/listaGames", method = RequestMethod.GET, produces = { "application/json"})
-	@ResponseBody
-	@CrossOrigin(origins = "https://mais-que-especial.herokuapp.com")
+	@ResponseBody 
+	@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
 	public List<Jogo> listaGames() {
 		ArrayList<Jogo> list = new ArrayList<Jogo>();
 		Jogo j1 = new Jogo();
@@ -89,7 +89,7 @@ public class InstituicaoController {
 	}
 	
 	@RequestMapping(value = "/especial/addInstituicao", method = RequestMethod.POST)
-	@CrossOrigin(origins = "https://mais-que-especial.herokuapp.com")
+	@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
 	public String salvar(@RequestBody Instituicao instituicao, Errors errors) {
 		
 		if ( errors.hasErrors() ) {
