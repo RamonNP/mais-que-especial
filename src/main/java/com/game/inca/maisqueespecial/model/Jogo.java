@@ -29,8 +29,8 @@ public class Jogo implements Serializable {
 	private int nriddiciplina;
 
 	//bi-directional many-to-one association to Jogoaluno
-	@OneToMany(mappedBy="jogo")
-	private List<Jogoaluno> jogoalunos;
+//	@OneToMany(mappedBy="jogo", fetch = FetchType.EAGER)
+//	private List<Jogoaluno> jogoalunos;
 
 	
 	public String getDescDetalhe() {
@@ -89,26 +89,26 @@ public class Jogo implements Serializable {
 		this.nriddiciplina = nriddiciplina;
 	}
 
-	public List<Jogoaluno> getJogoalunos() {
-		return this.jogoalunos;
-	}
+//	public List<Jogoaluno> getJogoalunos() {
+//		return this.jogoalunos;
+//	}
+//
+//	public void setJogoalunos(List<Jogoaluno> jogoalunos) {
+//		this.jogoalunos = jogoalunos;
+//	}
 
-	public void setJogoalunos(List<Jogoaluno> jogoalunos) {
-		this.jogoalunos = jogoalunos;
-	}
-
-	public Jogoaluno addJogoaluno(Jogoaluno jogoaluno) {
-		getJogoalunos().add(jogoaluno);
-		jogoaluno.setJogo(this);
-
-		return jogoaluno;
-	}
-
-	public Jogoaluno removeJogoaluno(Jogoaluno jogoaluno) {
-		getJogoalunos().remove(jogoaluno);
-		jogoaluno.setJogo(null);
-
-		return jogoaluno;
-	}
+//	public Jogoaluno addJogoaluno(Jogoaluno jogoaluno) {
+//		getJogoalunos().add(jogoaluno);
+//		jogoaluno.setJogo(this);
+//
+//		return jogoaluno;
+//	}
+//
+//	public Jogoaluno removeJogoaluno(Jogoaluno jogoaluno) {
+//		getJogoalunos().remove(jogoaluno);
+//		jogoaluno.setJogo(null);
+//
+//		return jogoaluno;
+//	}
 
 }

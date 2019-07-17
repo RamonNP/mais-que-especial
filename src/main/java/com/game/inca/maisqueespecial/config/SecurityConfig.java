@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable().authorizeRequests()
 			.antMatchers("/sistema-transp/especia/instituicoes").permitAll()
 			.antMatchers("/listaGames").permitAll()
+			.antMatchers("/listaGamesPorUsuario/*").permitAll()
 			.antMatchers("/static/*").permitAll()
 			.antMatchers("/users").permitAll()
 			.antMatchers("/especial/addInstituicao").permitAll()
