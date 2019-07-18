@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/sistema-transp/especia/instituicoes").permitAll()
 			.antMatchers("/listaGames").permitAll()
 			.antMatchers("/listaGamesPorUsuario/*").permitAll()
+			.antMatchers("*/especial/listaGamesPorUsuario/*").permitAll()
 			.antMatchers("/static/*").permitAll()
 			.antMatchers("/users").permitAll()
 			.antMatchers("/especial/addInstituicao").permitAll()

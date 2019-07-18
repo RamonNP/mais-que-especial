@@ -16,10 +16,12 @@ public class WebConfig implements WebMvcConfigurer {
 	        .allowedOrigins("*")
 	        .allowedOrigins("*")
 	        .allowedHeaders("https://maisqueespecialgames.herokuapp.com/")
+	        .allowedMethods("OPTIONS")
 	        .allowedMethods("PUT")
-	        .allowedMethods("GET")
 	        .allowedMethods("POST")
 	        .allowedMethods("GET")
+	        .allowCredentials(false)
+	        .maxAge(3600)
 	        ;
 	    }
 }
