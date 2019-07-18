@@ -15,7 +15,7 @@ import com.game.inca.maisqueespecial.model.Jogo;
 import com.game.inca.maisqueespecial.repository.JogoRepository;
 
 @Controller
-@CrossOrigin(origins = {"https://mais-que-especial-web.herokuapp.com/*", "https://maisqueespecialgames.herokuapp.com/*"})
+@CrossOrigin(origins = {"https://maisqueespecialgames.herokuapp.com"})
 public class JogosController {
 	
 	@Autowired
