@@ -10,8 +10,5 @@ public class JogoService {
 	
 	@Autowired
 	private JogoRepository jRepository;
-	
-	
-	
 
 }
