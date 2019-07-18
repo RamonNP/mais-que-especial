@@ -14,7 +14,8 @@ public class WebConfig implements WebMvcConfigurer {
 	    public void addCorsMappings(CorsRegistry registry) {
 	        registry.addMapping("/**")
 	        .allowedOrigins("*")
-	        .allowedHeaders("*")
+	        .allowedOrigins("*")
+	        .allowedHeaders("https://maisqueespecialgames.herokuapp.com/")
 	        .allowedMethods("PUT")
 	        .allowedMethods("GET")
 	        .allowedMethods("POST")
