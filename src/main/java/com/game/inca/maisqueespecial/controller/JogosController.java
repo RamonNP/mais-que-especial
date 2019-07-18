@@ -21,7 +21,7 @@ public class JogosController {
 	@Autowired
 	private JogoRepository jogoRepository;
 
-	@RequestMapping(value = "/listaGamesPorUsuario/{login}", method = RequestMethod.GET, produces = { "application/json"})
+	@RequestMapping(value = "/listaGamesPorUsuario/{login}", method = RequestMethod.OPTIONS, produces = { "application/json"})
 	@ResponseBody 
 	//@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
 	@CrossOrigin(origins = {"*"})
