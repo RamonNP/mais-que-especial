@@ -24,7 +24,7 @@ public class JogosController {
 	@RequestMapping(value = "/listaGamesPorUsuario/{login}", method = RequestMethod.GET, produces = { "application/json"})
 	@ResponseBody 
 	//@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
-	@CrossOrigin
+	@CrossOrigin(origins = {"https://maisqueespecialgames.herokuapp.com"})
 	public String listaGames(@PathVariable String login) {
 		ArrayList<Jogo> list = jogoRepository.findByLogin(login);
 		return montarArrayJogos(list);
