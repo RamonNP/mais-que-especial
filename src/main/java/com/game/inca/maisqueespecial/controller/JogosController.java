@@ -15,16 +15,16 @@ import com.game.inca.maisqueespecial.model.Jogo;
 import com.game.inca.maisqueespecial.repository.JogoRepository;
 
 @Controller
-@CrossOrigin(origins = {"https://maisqueespecialgames.herokuapp.com"})
+//@CrossOrigin(origins = {"https://maisqueespecialgames.herokuapp.com"})
 public class JogosController {
 	
 	@Autowired
 	private JogoRepository jogoRepository;
 
-	
 	@RequestMapping(value = "/listaGamesPorUsuario/{login}", method = RequestMethod.GET, produces = { "application/json"})
 	@ResponseBody 
 	//@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
+	@CrossOrigin
 	public String listaGames(@PathVariable String login) {
 		ArrayList<Jogo> list = jogoRepository.findByLogin(login);
 		return montarArrayJogos(list);
