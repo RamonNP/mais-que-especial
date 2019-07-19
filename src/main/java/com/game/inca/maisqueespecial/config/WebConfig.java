@@ -12,14 +12,13 @@ public class WebConfig implements WebMvcConfigurer {
 
 	 @Override
 	    public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("/**")
+	        String headers;
+			registry.addMapping("/**")
+			//.allowedHeaders(headers)
 	        .allowedOrigins("*")
 	        .allowedOrigins("*")
 	        .allowedHeaders("https://maisqueespecialgames.herokuapp.com/")
-	        .allowedMethods("OPTIONS")
-	        .allowedMethods("PUT")
-	        .allowedMethods("POST")
-	        .allowedMethods("GET")
+	        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT")
 	        .allowCredentials(false)
 	        .maxAge(3600)
 	        ;
