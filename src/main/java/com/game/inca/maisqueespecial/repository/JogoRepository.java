@@ -17,5 +17,14 @@ public interface JogoRepository extends JpaRepository<Jogo, Long>{
 			"	AND    A.desclogin = ?1", nativeQuery = true)
 	ArrayList<Jogo> findByLogin(String login);
 	Jogo findByNridjogo(int id);
+	
+	@Query(value = "SELECT Al.nridaluno FROM ALUNO Al, ACESSO A , JOGOALUNO JA  \n" + 
+			"	WHERE  AL.nridacesso = A.nridacesso \n" + 
+			"	AND    JA.nridaluno = AL.nridaluno \n" + 
+			"	AND    A.desclogin = ?1" +
+			"	AND    JA.nridJogo = ?2 \n"
+			, nativeQuery = true)
+	int findAlunoByLogin(String login, int jogo);
+
 
 }
