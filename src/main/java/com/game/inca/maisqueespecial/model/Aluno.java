@@ -21,7 +21,9 @@ public class Aluno implements Serializable {
 
 	private int nridacesso;
 
-	private int nriddetalhescadastro;
+	@OneToOne
+	@JoinColumn(name="nriddetalhescadastro")
+	private Detalhescadastro detalhescadastro;
 
 	private int nridendereco;
 
@@ -50,12 +52,14 @@ public class Aluno implements Serializable {
 		this.nridacesso = nridacesso;
 	}
 
-	public int getNriddetalhescadastro() {
-		return this.nriddetalhescadastro;
+	
+
+	public Detalhescadastro getDetalhescadastro() {
+		return detalhescadastro;
 	}
 
-	public void setNriddetalhescadastro(int nriddetalhescadastro) {
-		this.nriddetalhescadastro = nriddetalhescadastro;
+	public void setDetalhescadastro(Detalhescadastro detalhescadastro) {
+		this.detalhescadastro = detalhescadastro;
 	}
 
 	public int getNridendereco() {

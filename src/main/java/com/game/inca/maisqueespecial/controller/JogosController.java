@@ -13,11 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.game.inca.maisqueespecial.model.Jogada;
+import com.game.inca.maisqueespecial.model.Aluno;
+import com.game.inca.maisqueespecial.model.Jogadas;
 import com.game.inca.maisqueespecial.model.Jogo;
+import com.game.inca.maisqueespecial.model.Jogoaluno;
+import com.game.inca.maisqueespecial.repository.AlunoRepository;
+import com.game.inca.maisqueespecial.repository.JogadaRepository;
 import com.game.inca.maisqueespecial.repository.JogadasRepository;
 import com.game.inca.maisqueespecial.repository.JogoRepository;
 import com.game.inca.maisqueespecial.request.JogadasRequest;
+import com.game.inca.maisqueespecial.response.JogadasResponse;
+import com.game.inca.maisqueespecial.util.JogoUtil;
 
 @Controller
 //@CrossOrigin(origins = {"https://maisqueespecialgames.herokuapp.com"})
@@ -25,9 +31,14 @@ public class JogosController {
 	
 	@Autowired
 	private JogoRepository jogoRepository;
+	@Autowired
+	private JogadaRepository jogadaRepository;
+	@Autowired
+	private AlunoRepository alunoRepository;
 	
 	@Autowired
 	private JogadasRepository jogadasRepository;
+	
 	
 	@RequestMapping(value = "/addJogadas", method = RequestMethod.POST, produces = { "application/json"})
 	@ResponseBody 
@@ -38,13 +49,30 @@ public class JogosController {
 		try {
 			idJogoALuno = jogoRepository.findAlunoByLogin(jogada.getLogin(), jogada.getJogo());
 			//public Jogada( int nridjogoaluno, int nqTempoSegundos, int nrQtdTentativas, Date dtInserida) {
-			Jogada j = new Jogada(idJogoALuno, jogada.getTempo(), jogada.getTentativas(), new Date() );
+			Jogadas j = new Jogadas(idJogoALuno, jogada.getTempo(), jogada.getTentativas(), new Date() );
 			jogadasRepository.save(j);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "0";
 		}
 		return "1";
+		
+	}
+	@RequestMapping(value = "/getPlayByUserAndGame", method = RequestMethod.POST, produces = { "application/json"})
+	@ResponseBody 
+	//@CrossOrigin(origins = "https://mais-que-especial-web.herokuapp.com")
+	@CrossOrigin(origins = {"*"})
+	public List<JogadasResponse> getPlayByUserAndGame(@RequestBody JogadasRequest jogada) {
+		List<JogadasResponse> responseJogadas = null;
+		try {
+			Aluno aluno = alunoRepository.findByNridaluno(jogada.getNrIdAluno());
+			if(aluno != null) {
+				responseJogadas = JogoUtil.responseJogadas(aluno);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return responseJogadas;
 		
 	}
 
@@ -88,6 +116,18 @@ public class JogosController {
 
 	public void setJogadasRepository(JogadasRepository jogadasRepository) {
 		this.jogadasRepository = jogadasRepository;
+	}
+	public JogadaRepository getJogadaRepository() {
+		return jogadaRepository;
+	}
+	public void setJogadaRepository(JogadaRepository jogadaRepository) {
+		this.jogadaRepository = jogadaRepository;
+	}
+	public AlunoRepository getAlunoRepository() {
+		return alunoRepository;
+	}
+	public void setAlunoRepository(AlunoRepository alunoRepository) {
+		this.alunoRepository = alunoRepository;
 	}
 
 	

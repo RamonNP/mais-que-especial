@@ -1,6 +1,8 @@
 package com.game.inca.maisqueespecial.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -26,6 +28,10 @@ public class Jogoaluno implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="NRIDALUNO")
 	private Aluno aluno;
+	
+	//bi-directional many-to-one association to Jogoaluno
+	@OneToMany(mappedBy="jogoAluno")
+	private List<Jogadas> jogadas;
 
 	public Jogoaluno() {
 	}
@@ -53,5 +59,15 @@ public class Jogoaluno implements Serializable {
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
+
+	public List<Jogadas> getJogadas() {
+		return jogadas;
+	}
+
+	public void setJogadas(List<Jogadas> jogadas) {
+		this.jogadas = jogadas;
+	}
+	
+	
 
 }

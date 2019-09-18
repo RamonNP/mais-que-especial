@@ -9,6 +9,7 @@ public class JogadasRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String login;
 	private int jogo;
+	private int nrIdAluno;
 	private int tempo;
 	private int tentativas;
 
@@ -46,5 +47,13 @@ public class JogadasRequest implements Serializable {
 		this.tentativas = tentativas;
 	}
 
+	public int getNrIdAluno() {
+		return nrIdAluno;
+	}
 
+	public void setNrIdAluno(int nrIdAluno) {
+		this.nrIdAluno = nrIdAluno;
+	}
+
+	
 }
